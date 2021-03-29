@@ -1,6 +1,7 @@
 <template>
   <v-card
     outlined
+    class="base_card_box"
   > 
     <span v-if="label" class="label_wrapper">{{ label }}</span>
     <slot />
@@ -19,11 +20,14 @@ export default {
 }
 </script>
 <style lang="scss">
-    .label_wrapper {
-        padding: 4px 8px;
-        display: inline-block;
-        background-color: #BABABA;
-        color: white;
-        font-weight: bold;
+.base_card_box {
+  .label_wrapper {
+      padding: 4px 8px;
+      display: inline-block;
+      background-color: #BABABA;
+      color: white;
+      font-weight: bold;
     }
+  box-shadow: 10px 10px 40px #d6d8d9, -20px -20px 60px #ffffff;
+}
 </style>

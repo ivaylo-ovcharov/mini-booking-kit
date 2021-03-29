@@ -1,5 +1,5 @@
 <template>
-  <base-card-box label="Booking statistics" style="height: 100%">
+  <base-card-box label="Booking statistics" class="dashboard_booking_chart">
     <line-chart
       v-if="bookingCollection"
       class="pa-6"
@@ -73,11 +73,13 @@ export default {
 </script>
 
 <style lang="scss">
+.dashboard_booking_chart {
+  height: 100%;
   .chart_card {
     height: 100%;
     display: flex !important;
     align-items: center;
     justify-content: center;
   }
-  
+}
 </style>

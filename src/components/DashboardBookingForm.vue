@@ -1,5 +1,5 @@
 <template>
-  <base-card-box label="Add new booking">
+  <base-card-box label="Add new booking" class="dashboard_booking_form">
     <v-form
       ref="form"
       v-model="valid"
@@ -82,12 +82,12 @@ export default {
     firstNameRules: [v => !!v || 'First name is required'],
     lastNameRules: [v => !!v || 'Last name is required'],
     dateRules: [v => !!v || 'Date is required'],
+    datepicker: false,
     booking: {
       firstName: '',
       lastName: '',
-      date: new Date().toISOString().substr(0, 10),
-    },
-    datepicker: false,
+      date: '',
+    }
   }),
   methods: {
     ...mapMutations([
@@ -109,11 +109,13 @@ export default {
 }
 </script>
 <style lang="scss">
+.dashboard_booking_form {
   .v-text-field.v-text-field--solo:not(.v-text-field--solo-flat) > .v-input__control > .v-input__slot.v-input__slot {
     box-shadow: none;
-    border: 1px solid #dfdfdf;
+    border: 1px solid #cecece;
   }
    .v-text-field.v-text-field--solo:not(.v-text-field--solo-flat) > .v-input__control > .v-input__slot:focus {
     border: 1px solid red !important;
   }
+} 
 </style>

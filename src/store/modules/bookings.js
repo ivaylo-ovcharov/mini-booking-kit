@@ -1,13 +1,13 @@
 const state = { 
   bookings: [{
     id: 1,
-    firstName: 'MyFirst',
-    lastName: 'Booking',
+    firstName: 'Micheal',
+    lastName: 'Kooper',
     date: '2021-03-29'
   }, {
     id: 2,
-    firstName: 'MySecond',
-    lastName: 'Booking',
+    firstName: 'Jenifer',
+    lastName: 'Walker',
     date: '2021-03-30'
   }]
 }

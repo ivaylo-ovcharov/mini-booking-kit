@@ -30,12 +30,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.dashboard {
-  .v-card, .v-app-bar {
-    box-shadow: 10px 10px 40px #d6d8d9, -20px -20px 60px #ffffff;
-  }
-}
-
-</style>

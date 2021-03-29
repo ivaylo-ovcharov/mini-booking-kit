@@ -1,5 +1,5 @@
 <template>
-  <base-card-box label="Manage bookings" class="mt-4">
+  <base-card-box label="Manage bookings" class="mt-4 dashboard_booking_table">
     <v-data-table
       :headers="headers"
       :items="getBookings"
@@ -8,7 +8,7 @@
       class="elevation-0 pa-6"
     >
       <template v-slot:item.firstName="{ item }">
-        <span class="font-weight-bold" style="color: #59A8C7">{{ item.firstName }}  {{ item.lastName }}</span>
+        <span class="font-weight-bold primary-lighter-color">{{ item.firstName }}  {{ item.lastName }}</span>
         <br> <span>{{ item.duration }}</span>
       </template>
       <template v-slot:item.id="{ item }">
@@ -69,30 +69,34 @@ export default {
       'removeBooking'
     ]),
     verifyDeleteBooking (bookingId) {
-      if (confirm('Are you sure that you want to delete that record?')) {
+      if (window.confirm('Are you sure that you want to delete that record?')) {
         this.removeBooking(bookingId)
+      } else {
+
       }
     }
   }
 }
 </script>
 <style lang="scss">
+.dashboard_booking_table {
   .v-data-footer__select {
     display: none !important
   }
-  .menu_options {
-  padding: 0px !important;
-  box-shadow: none;
-  .v-list-item:hover  {
-    cursor: pointer;
-    background: #F8FAFB
-  }
-  .v-list-item {
-    border: 1px solid #D6D8D9 !important;
-    min-height: 36px;
+  .v-data-footer {
+    padding-top: 15px
   }
 }
-.v-data-footer {
-  padding-top: 15px
+.menu_options {
+    padding: 0px !important;
+    box-shadow: none;
+    .v-list-item:hover  {
+      cursor: pointer;
+      background: #F8FAFB
+    }
+    .v-list-item {
+      border: 1px solid #D6D8D9 !important;
+      min-height: 36px;
+    }
 }
 </style>
