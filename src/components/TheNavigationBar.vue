@@ -5,7 +5,7 @@
     <div class="d-flex align-center">
       <v-img
         alt="Mini BookingKit"
-        class="shrink mt-1 hidden-sm-and-down"
+        class="shrink mt-1"
         contain
         min-width="100"
         src="@/assets/logo.png"

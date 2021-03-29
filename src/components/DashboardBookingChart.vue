@@ -1,34 +1,36 @@
 <template>
   <base-card-box label="Booking statistics" class="dashboard_booking_chart">
-    <line-chart
-      v-if="bookingCollection"
-      class="pa-6"
-      :height="barheight"
-      :chart-data="bookingCollection"
-      :options="options"
-    />
-    <p v-if="!bookingCollection" class="font-weight-bold">
-      No Available Data for Events
-    </p>
+    <div class="d-flex justify-center align-center chart_container">
+      <bar-chart
+        v-if="bookingCollection && getBookings.length"
+        class="pa-6 bar_chart"
+        :height="barheight"
+        :chart-data="bookingCollection"
+        :options="options"
+      />
+      <p v-else class="font-weight-bold">
+        No Available Data for bookings
+      </p>
+    </div>
   </base-card-box>
 </template>
 <script>
 import BaseCardBox from '@/components/BaseCardBox.vue'
-import LineChart from '@/components/BaseLineChart.vue'
+import BarChart from '@/components/BaseBarChart.vue'
 import { mapGetters } from 'vuex'
 import ChartJSPluginDatalabels from 'chartjs-plugin-datalabels'
 import { bookingOptions } from '@/config/bookingChartOptions.js'
-import chroma from 'chroma-js'
 import { countBy, uniqBy, map, sortBy } from 'lodash'
+import chroma from 'chroma-js'
 
 export default {
   name: 'DashboardBookingChart',
   components: {
-    LineChart,
+    BarChart,
     BaseCardBox
   },
   data:() => ({
-    barheight: 280,
+    barheight: 240,
     bookingCollection: null,
     options: bookingOptions
   }),
@@ -49,7 +51,7 @@ export default {
       const sortedBookingsByDate = sortBy(bookings, 'date')
       const bookingDates = this.getBookingDates(sortedBookingsByDate)
       const bookingCountByDay = this.getBookingCountByDate(sortedBookingsByDate)
-      const eventColorPallete = chroma.scale(['#004F73', '#8ec2ed']).mode('lab').colors(bookingDates.length)
+      const eventColorPallete = chroma.scale(['#004F73', '#206789']).mode('lab').colors(bookingDates.length)
       return {
         labels: bookingDates,
         datasets: [
@@ -75,11 +77,11 @@ export default {
 <style lang="scss">
 .dashboard_booking_chart {
   height: 100%;
-  .chart_card {
-    height: 100%;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
+  .chart_container {
+    height: 100%
+  }
+  .bar_chart {
+    width: 100%
   }
 }
 </style>

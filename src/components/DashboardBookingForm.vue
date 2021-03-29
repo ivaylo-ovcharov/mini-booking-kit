@@ -59,10 +59,15 @@
       <v-btn
         :disabled="!valid"
         color="secondary"
-        rounded
         class="mr-4 elevation-0 submit_button"
         @click="submit()"
       >
+        <v-icon
+          left
+          dark
+        >
+          mdi-plus
+        </v-icon>
         Add booking
       </v-btn>
     </v-form>
@@ -116,6 +121,9 @@ export default {
   }
    .v-text-field.v-text-field--solo:not(.v-text-field--solo-flat) > .v-input__control > .v-input__slot:focus {
     border: 1px solid red !important;
+  }
+  .submit_button {
+    width: 100%
   }
 } 
 </style>

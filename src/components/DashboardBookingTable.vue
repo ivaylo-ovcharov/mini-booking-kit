@@ -7,11 +7,10 @@
       :items-per-page="3"
       class="elevation-0 pa-6"
     >
-      <template v-slot:item.firstName="{ item }">
+      <template v-slot:[`item.firstName`]="{ item }">
         <span class="font-weight-bold primary-lighter-color">{{ item.firstName }}  {{ item.lastName }}</span>
-        <br> <span>{{ item.duration }}</span>
       </template>
-      <template v-slot:item.id="{ item }">
+      <template v-slot:[`item.id`]="{ item }">
         <v-menu
           offset-y
         >
