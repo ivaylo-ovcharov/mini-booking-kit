@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 <template>
   <base-card-box label="Booking statistics" class="dashboard_booking_chart">
     <div class="d-flex justify-center align-center chart_container">
@@ -20,8 +21,10 @@ import BarChart from '@/components/BaseBarChart.vue'
 import { mapGetters } from 'vuex'
 import ChartJSPluginDatalabels from 'chartjs-plugin-datalabels'
 import { bookingOptions } from '@/config/bookingChartOptions.js'
-import { countBy, uniqBy, map, sortBy } from 'lodash'
+import { countBy, groupBy, map, sortBy } from 'lodash'
 import chroma from 'chroma-js'
+import moment from 'moment'
+
 
 export default {
   name: 'DashboardBookingChart',
@@ -49,8 +52,9 @@ export default {
   methods: {
     generateBookingChart (bookings) {
       const sortedBookingsByDate = sortBy(bookings, 'date')
-      const bookingDates = this.getBookingDates(sortedBookingsByDate)
-      const bookingCountByDay = this.getBookingCountByDate(sortedBookingsByDate)
+      const groupedByMonth = this.groupDateByMonth(sortedBookingsByDate)
+      const bookingDates = Object.keys(groupedByMonth)
+      const bookingCountByMonth = map(groupedByMonth, 'length')
       const eventColorPallete = chroma.scale(['#004F73', '#206789']).mode('lab').colors(bookingDates.length)
       return {
         labels: bookingDates,
@@ -58,17 +62,15 @@ export default {
           {
             label: ['Bookings by day'],
             backgroundColor: eventColorPallete,
-            data: bookingCountByDay
+            data: bookingCountByMonth
           }
         ]
       }
     },
-    getBookingDates (bookings) {
-      const bookingUniqueByDates = uniqBy(bookings, 'date')
-      return map(bookingUniqueByDates, 'date')
-    },
-    getBookingCountByDate (bookings) {
-      return Object.values(countBy(bookings, 'date'))
+    groupDateByMonth (bookings) {  
+      return groupBy(bookings,function (booking){
+        return moment(booking.date).format('MMM YY')
+      })
     }
   }
 }
