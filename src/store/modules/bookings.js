@@ -1,51 +1,32 @@
 const state = { 
-  bookings: []
+  bookings: [{
+    id: 1,
+    firstName: 'MyFirst',
+    lastName: 'Booking',
+    date: '2021-03-29'
+  }, {
+    id: 2,
+    firstName: 'MySecond',
+    lastName: 'Booking',
+    date: '2021-03-30'
+  }]
 }
 
 const getters = { 
-  getBookings: state => state.products,
-//   emptyCart:  state => state.products.length ? false : true,
-//   getOrderLength (state) {
-//     const products = state.products
-//     let baseketLength = 0
-//     products.map((product) => {
-//       baseketLength = baseketLength + product.quantity
-//     })
-//     return baseketLength
-//   },
-//   getOrderPrice (state) {
-//     const products = state.products
-//     let basketPrice = 0
-//     products.map((product) => {
-//       basketPrice = basketPrice + product.quantity * product.price
-//     })
-//     return basketPrice
-//   },
+  getBookings: state => state.bookings
 }
 
 const mutations = { 
-  setBookings (state, products) {
-    state.products = products
+  addBooking (state, booking) {
+    state.bookings.push({
+      id: state.bookings.length + 1,
+      ...booking
+    })
   },
-  //   addProductToCart (state, product) {
-  //     product.quantity = parseInt(product.quantity) || 1
-  //     const record = state.products.find(i => i.id === product.id)
-
-  //     if(!record) {
-  //       state.products.push({
-  //         quantity: product.quantity,
-  //         ...product
-  //       })
-  //     } else {
-  //       record.quantity = record.quantity + product.quantity
-  //     }
-
-  //     Cookies.set('cart', state.items)
-  //   },
-  //   removeProduct (state, product) {
-  //     const index = state.products.findIndex(i => i.id === product.id)
-  //     state.products.splice(index, 1)
-  //   }
+  removeBooking (state, productId) {
+    const index = state.bookings.findIndex(i => i.id === productId)
+    state.bookings.splice(index, 1)
+  }
 
 }
 

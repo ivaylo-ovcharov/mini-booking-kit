@@ -1,34 +1,25 @@
 <template>
   <div>
     <v-app>
-      <v-app-bar
-        app
-      >
-        <div class="d-flex align-center">
-          <v-img
-            alt="Vuetify Name"
-            class="shrink mt-1 hidden-sm-and-down"
-            contain
-            min-width="100"
-            src="@/assets/logo.png"
-            width="100"
-          />
-        </div>
-      </v-app-bar>
+      <the-navigation-bar />
       <v-container>
         <router-view />
       </v-container>
+      <the-footer />
     </v-app>
   </div>
 </template>
 
 <script>
+import TheNavigationBar from '@/components/TheNavigationBar.vue'
+import TheFooter from '@/components/TheFooter.vue'
 
 export default {
   name: 'App',
-
-  data: () => ({
-    //
-  }),
+  components: {
+    TheNavigationBar,
+    TheFooter
+  }
 }
 </script>
+

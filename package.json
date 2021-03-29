@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "chart.js": "^2.9.4",
+    "chartjs-plugin-datalabels": "^0.7.0",
     "chroma-js": "^2.1.1",
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",

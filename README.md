@@ -1,4 +1,7 @@
-# mini-booking-kit
+![alt text](http://entropyactive.com/booking-kit.png)
+
+# Mini Booking kit
+A mini booking that enables you to add, delete and get statistics for bookings.
 
 ## Project setup
 ```
@@ -9,16 +12,3 @@ npm install
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
