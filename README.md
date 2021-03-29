@@ -1,4 +1,4 @@
-![alt text](http://entropyactive.com/booking-kit.png)
+![alt text](http://entropyactive.com/booking-kit-image.png)
 
 # Mini Booking kit
 A mini booking that enables you to add, delete and get statistics for bookings.
